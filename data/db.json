@@ -1,0 +1,47 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "john_doe",
+      "email": "key123",
+      "password": "password123",
+      "secret": "secret"
+    },
+    {
+      "id": "4817",
+      "username": "Uktamjon Rakhmatullaev",
+      "email": "rakhmatullayev2019@gmail.com",
+      "password": "11111111"
+    },
+    {
+      "id": "ff98",
+      "username": "Uktamjon Rakhmatullaev",
+      "email": "rakhmatullayev2019@gmail.com",
+      "password": "121142114"
+    },
+    {
+      "id": "9163",
+      "username": "Uktamjon Rakhmatullaev",
+      "email": "uktamjonrakhmatullaev@gmail.com",
+      "password": "1234567890"
+    },
+    {
+      "id": "734f",
+      "username": "Uktamjon Rakhmatullaev",
+      "email": "rakhmatullayev2019@gmail.com",
+      "password": "asdadadasdsaasd"
+    }
+  ],
+  "books": [
+    {
+      "id": "a1b4",
+      "title": "1qweee",
+      "author": "2qweee",
+      "cover": "5qwee",
+      "pages": "3wqee",
+      "status": "4wq",
+      "isbn": "4wq",
+      "published": "5qwee"
+    }
+  ]
+}
