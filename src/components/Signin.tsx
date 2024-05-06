@@ -1,26 +1,33 @@
 import React, { useState } from 'react'
 import { Button, TextField, Grid, Typography, Container } from '@mui/material'
 import PasswordMeterInput from './Password'
-import { useGetUsersQuery, useLoginMutation } from '../api/userApi'
+import { useGetUsersQuery } from '../api/userApi'
 import { useNavigate, Link } from 'react-router-dom'
 
 const Signin: React.FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [login, { isLoading }] = useLoginMutation()
-  const { data: usersData } = useGetUsersQuery()
+  const { data: usersData, isLoading: usersLoading, refetch } = useGetUsersQuery()
   const navigate = useNavigate()
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (usersLoading) {
+      return
+    }
+
     try {
-      const user = usersData?.find(
-        (user) => user.email === email && user.password === password
-      )
-      console.log(user, login)
-      if (user) {
-        navigate('/books')
+      await refetch()
+      if (usersData) {
+        const user = usersData.find(
+          (user) => user.email === email && user.password === password
+        )
+        if (user) {
+          navigate('/books')
+        } else {
+          alert('Invalid email or password')
+        }
       } else {
-        alert('Invalid email or password')
+        alert('User data is not available')
       }
     } catch (error) {
       console.error('Error adding user:', error)
@@ -65,7 +72,7 @@ const Signin: React.FC = () => {
               color="primary"
               type="submit"
               fullWidth
-              disabled={isLoading}
+              disabled={usersLoading}
             >
               Sign up
             </Button>
